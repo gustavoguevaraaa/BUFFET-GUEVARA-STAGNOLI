@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buffet - Escuela Martín Zapata</title>
+  <link rel="stylesheet" href="styles.css">
+  <!-- Fuentes e Íconos de Google -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+</head>
+<body>
+
+  <!-- BARRA LATERAL (SIDEBAR DE NAVEGACIÓN) -->
+  <aside class="sidebar">
+    <div class="brand">
+      <h2>Buffet MZ</h2>
+      <p>Escuela Martín Zapata</p>
+    </div>
+
+    <nav class="nav-menu">
+      <a href="inicio" class="nav-item active" id="nav-inicio">
+        <span class="material-symbols-outlined">home</span>
+        Inicio
+      </a>
+      <a href="clientes" class="nav-item" id="nav-clientes">
+        <span class="material-symbols-outlined">group</span>
+        Clientes
+      </a>
+      <a href="facturas" class="nav-item" id="nav-facturas">
+        <span class="material-symbols-outlined">receipt_long</span>
+        Facturas
+      </a>
+      <a href="productos" class="nav-item" id="nav-productos">
+        <span class="material-symbols-outlined">inventory_2</span>
+        Productos
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <span class="material-symbols-outlined">account_circle</span>
+      <div class="user-info">
+        <p class="user-name" id="nombreUsuario"><!-- Nombre del Usuario activo --></p>
+        <p class="user-role" id="rolUsuario"><!-- Rol del Usuario --></p>
+      </div>
+    </div>
+  </aside>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main class="main-content">
+
+    <!-- ENCABEZADO Y BUSCADOR -->
+    <header class="top-header">
+      <h1>Panel Principal</h1>
+      <form action="buscar" method="GET" class="search-bar">
+        <span class="material-symbols-outlined">search</span>
+        <input type="text" name="query" id="inputBuscar" placeholder="Buscar productos, facturas...">
+      </form>
+    </header>
+
+    <!-- SECCIÓN: PRODUCTOS RECOMENDADOS -->
+    <section class="section" id="seccion-recomendados">
+      <div class="section-header">
+        <h2>Productos Recomendados</h2>
+        <a href="productos" class="view-all">Ver todos</a>
+      </div>
+
+      <!-- Contenedor dinámico de tarjetas de productos -->
+      <div class="cards-grid" id="contenedorProductosRecomendados">
+        
+        <!-- Plantilla de Tarjeta de Producto (Repetir según BD) -->
+        <article class="card" data-producto-id="">
+          <span class="badge" id="categoriaProducto"><!-- Etiqueta/Categoría --></span>
+          <div class="card-img" id="imagenProducto">
+            <span class="material-symbols-outlined">fastfood</span>
+          </div>
+          <div class="card-body">
+            <h3 class="producto-nombre" id="nombreProducto"><!-- Nombre Producto --></h3>
+            <p class="description" id="descripcionProducto"><!-- Descripción --></p>
+            <div class="card-footer">
+              <span class="price" id="precioProducto"><!-- $ Precio --></span>
+              <button class="btn-add" id="btnAgregar" data-id="" title="Agregar al carrito">+</button>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- SECCIÓN: COMPRAS ANTERIORES -->
+    <section class="section" id="seccion-compras-anteriores">
+      <div class="section-header">
+        <h2>Compras Anteriores</h2>
+        <a href="facturas" class="view-all">Historial completo</a>
+      </div>
+
+      <!-- Tabla dinámica de compras -->
+      <div class="table-container">
+        <table class="data-table" id="tablaComprasAnteriores">
+          <thead>
+            <tr>
+              <th>ID Factura / Pedido</th>
+              <th>Fecha</th>
+              <th>Detalle de Productos</th>
+              <th>Total</th>
+              <th>Estado</th>
+            </tr>
+          </thead>
+          <tbody id="tbodyComprasAnteriores">
+            <!-- Fila de ejemplo de iteración -->
+            <tr data-factura-id="">
+              <td class="col-id"><!-- ID Factura --></td>
+              <td class="col-fecha"><!-- Fecha y Hora --></td>
+              <td class="col-detalle"><!-- Lista de productos --></td>
+              <td class="col-total"><!-- Total $ --></td>
+              <td class="col-estado"><span class="status"><!-- Estado --></span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+</body>
+</html>
